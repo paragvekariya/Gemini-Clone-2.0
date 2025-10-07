@@ -48,3 +48,17 @@ body{
     max-width: 980px;
 }
 
+.container .app-header {
+    margin-top: 4vh;
+}
+
+.app-header .heading{
+ font-size: 3rem;
+ width: fit-content;
+ background: linear-gradient(to right, #1d7efd, #8f6fff);
+ background-clip:text;
+}
+
+
+
+
