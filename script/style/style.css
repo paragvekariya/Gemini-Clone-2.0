@@ -57,8 +57,14 @@ body{
  width: fit-content;
  background: linear-gradient(to right, #1d7efd, #8f6fff);
  background-clip:text;
+ -webkit-background-clip: text;
+ -webkit-text-fill-color: transparent;
 }
 
+.app-header .sub-heading{
+    font-size: 3rem;
+    margin-top: -5px;
+}
 
 
 
