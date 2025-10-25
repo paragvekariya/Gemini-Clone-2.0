@@ -80,8 +80,8 @@ body.chats-active .container :where(.app-header, .suggestion){
 }
 
 .suggestion .suggestion-item {
-    width: 228px;
-    padding: 28px;
+    width: 216px;
+    padding: 18px;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
@@ -125,4 +125,40 @@ body.chats-active .container :where(.app-header, .suggestion){
 
 .suggestion .suggestion-item:nth-child(4) span {
     color: #6f42c1;
+}
+
+.container .chats-container {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.chats-container .message {
+    display: flex;
+    gap: 11px;
+    align-items: center;
+}
+
+.chats-container .message .message-text {
+    padding: 3px 16px;
+    word-wrap: break-word;
+    white-space: pre-line;
+}
+
+.chats-container .bot-message {
+    margin: 9px auto;
+}
+
+.chats-container .user-message {
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.chats-container .bot-message .avatar {
+    height: 43px;
+    width: 43px;
+    flex-shrink: 0;
+    padding: 6px;
+    align-self: flex-start;
+    margin-right: -7px;
 }
