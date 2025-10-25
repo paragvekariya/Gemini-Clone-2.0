@@ -186,5 +186,69 @@ body.chats-active .container :where(.app-header, .suggestion){
 .chats-container .user-message .img-attachment{
     width: 50%;
     margin-top: -7px;
-    
+    border-radius: 13px 3px 13px 13px;
+}
+
+.chats-container .user-message .file-attachment {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    padding: 10px;
+    margin-top: -7px;
+    border-radius: 13px 3px 13px 13px;
+    background: var(--secondary-color);
+}
+
+.chats-container .user-message .file-attachment span {
+    color: #1d7efd;
+}
+
+.prompt-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 16px 0;
+    background: var(--primary-color);
+}
+.prompt-container :where(.prompt-wrapper, .prompt-form, .prompt-actions){
+    display: flex;
+    gap: 12px;
+    height: 56px;
+    align-items: center;
+}
+
+.prompt-wrapper .prompt-form {
+    width: 100%;
+    height: 100%;
+    border-radius: 130px;
+    background: var(--secondary-color);
+}
+
+.prompt-form .prompt-input {
+    height: 100%;
+    width: 100%;
+    background: none;
+    outline: none;
+    border: none;
+    font-size: 1rem;
+    padding-left: 24px;
+    color: var(--text-color);
+}
+
+.prompt-form .prompt-input::placeholder{
+    color: var(--placeholder-color);
+}
+
+.prompt-wrapper button {
+    width: 56px;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    border-radius: 50%;
+    color: var(--text-color);
+    background: var(--secondary-color);
+    transition: 0.3s ease;
 }
