@@ -275,6 +275,7 @@ body.chats-active .container :where(.app-header, .suggestion){
     height: 45px !important;
     width: 45px !important;
 }
+
 .prompt-form #send-promt-btn {
     display: none;
     color: #fff;
@@ -295,4 +296,5 @@ body.chats-active .container :where(.app-header, .suggestion){
     object-fit: cover;
     display: none;
 }
+
 
