@@ -311,7 +311,44 @@ body.chats-active .container :where(.app-header, .suggestion){
 
 .prompt-form :is(#cancel-file-btn, #stop-response-btn:hover) {
     color: #d62939;
+    background: #69343951;
 }
+
+.prompt-form .file-icon {
+    color: #1d7efd;
+}
+
+.prompt-form #stop-response-btn,
+body.bot-responding .prompt-form .file-upload-wrapper {
+    display: none;
+}
+
+body.bot-responding .prompt-form #stop-response-btn {
+    display: block;
+}
+
+.prompt-container .disclaimer-text {
+    text-align: center;
+    font-size: 0.9rem;
+    padding: 16px 20px;
+    color: var(--placeholder-color);
+}
+
+/* responsive media query foe small screen ke liye */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 0 100px;
+    }
+
+    .app-header :is(.heading, .sub-heading){
+        font-size: 2rem;
+        line-height: 1.4;
+    }
+
+    
+    
+}
+
 
 
 
