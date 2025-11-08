@@ -1,1 +1,1 @@
-alert(admin approvel);
+// dom elements
