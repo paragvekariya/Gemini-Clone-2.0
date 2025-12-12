@@ -14,4 +14,12 @@ const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-
   -H "x-goog-api-key=${API_KEY}`;
 
   // global variable created
+  let typingInterval, controller;
+  const chatHistory = [];
+  const userData = {
+    message:"",
+    file: {},
+  };
+
+
   
