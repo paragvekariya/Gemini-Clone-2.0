@@ -22,4 +22,34 @@ const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-
   };
 
 
+  const createMessageElement = (content, ...classes) => {
+    const div = document.createElement("div");
+    div.classList.add("message", ...classes);
+    div.innerHTML = content;
+    return div;
+  } 
+
+  const scrollTOBottom = () => {
+    container.scrollTo({  top: container.scrollHeight, behavior: "smooth" });
+  };
+
+  const applyTypingEffect = (text, textElement, botMessageDiv) => {
+    textElement.textContent = "";
+    const words = text.split(" ");
+    let wordIndex = 0;
+
+    typingInterval = setInterval(() => {
+        if (wordIndex < words.length) {
+            textElement.textContent += 
+            (wordIndex > 0 ? " " : " ") + words [wordIndex++];
+            scrollTOBottom();
+        } else {
+            clearInterval (typingInterval);
+            botMessageDiv.classList.remove("loading");
+            document.body.classList.remove("bot-responding");
+
+        }
+    },40)
+  };
+    
   
