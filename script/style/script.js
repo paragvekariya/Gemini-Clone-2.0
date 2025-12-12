@@ -9,3 +9,9 @@ const themeToggleBtn = document.querySelector("#theme-toggle-btn");
 
 
 //API Copnfiguration
+const API_KEY = "AIzaSyAGGuV-PEf5cwJTpT_LjaPTKYO1XlckToE";
+const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent" \
+  -H "x-goog-api-key=${API_KEY}`;
+
+  // global variable created
+  
