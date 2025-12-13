@@ -51,5 +51,17 @@ const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-
         }
     },40)
   };
+
+
+  // Send user prompt and get Ai responce
+
+  const fetchBotResponse = async (botMessageDiv) => {
+    const textElement = botMessageDiv.querySelector(".message-text");
+    controller = new AbortController();
+
+    chatHistory.push({
+      role: "user"
+    })
+  }
     
   
