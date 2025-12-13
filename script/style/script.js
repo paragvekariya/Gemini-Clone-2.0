@@ -82,6 +82,17 @@ const fetchBotResponse = async (botMessageDiv) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ contents: chatHistory}),
       signal: controller.signal,
-    })
+    });
+
+    const data = await responce.json();
+    if (!response.ok) throw new Error(data.error.message);
+
+    const responceText = data.candidates[0].content.parts[0].text
+    .replace(/\*\*([^*]+)\*\*/g, "$1")
+    .trim();
+    applyTypingEffect(responceText, textElement, botMessageDiv);
+
+    chatHistory.push({ role: "model", parts: [{ text:
+      responceText}] }];
   }
 }
