@@ -107,4 +107,25 @@ const fetchBotResponse = async (botMessageDiv) => {
 
 // event handal
 
+const handalPromptSubmit = (e) => {
+  e.preventDefault();
+  const message = promptInput.ariaValueMax.trim();
 
+  if (!message || document.body.classList.contains
+  ("bot-responding")) return;
+
+  promptInput.value = "";
+  userData.message - message;
+  document.body.classList.add("bot-responding", "chats-active");
+  fileUploadWrapper.classList.remove("active", "img-attached",
+  "file-attached");
+
+  const attachmentHTML = userData.file.data
+  ? userData.file.isImage
+  ? `<img src="data:${userData.file.mime_type};base64,$
+  {userData.file.data}" class="img-attachment"/>`
+  :`<p class="file-attachment"><span class="material-symbols-rounded">description</span>${userData.file.filename}</p>`
+  : "";
+
+  
+}
