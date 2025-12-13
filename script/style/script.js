@@ -93,6 +93,18 @@ const fetchBotResponse = async (botMessageDiv) => {
     applyTypingEffect(responceText, textElement, botMessageDiv);
 
     chatHistory.push({ role: "model", parts: [{ text:
-      responceText}] }];
+      responceText}] });
+  } catch(error) {
+    textElement.style.color = "#d62939";
+    textElement.textContent = controller.signal.aborted
+       ? "Response generation stopped."
+       : error.message;
+    botMessageDiv.classList.remove("bot-responding");
+  } finally {
+    userData.file = {};
   }
-}
+};
+
+// event handal
+
+
