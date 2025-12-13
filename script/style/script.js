@@ -193,7 +193,32 @@ const stopBotResponce = () => {
         .querySelector(".bot-message.loading")
         ?.classList.remove("loading");
   document.body.classList.remove("bot-responding");
+}; 
+
+const deleteAllChats = () => {
+  chatHistory.length = 0;
+  chatContainer.innerHTML = 0;
+  document.body.classList.remove("bot-responding", "chat-active");
 };
+
+const applySuggestion = (e) => {
+  const text = e.currentTarget.querySelector(".text").textContent;
+  promptInput.value = text;
+  promptform.dispatchEvent(new Event("submit"));
+};
+
+//show ui controls (mobile behavior)
+const toggleMobileControls = ({ target }) => {
+  const wrapper = document.querySelector(".prompt-wrapper");
+  const isControl =
+  target.classList.contains("prompt-input") ||
+  (wrapper.classList.contains("hide-controls") &&
+    (target.id === "add-file-btn" || target.id === "stop-response-btn"));
+
+    wrapper.classList.toggle("hide-controls", isControl);
+};
+
+
 
 
 
