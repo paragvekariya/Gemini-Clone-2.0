@@ -219,6 +219,39 @@ const toggleMobileControls = ({ target }) => {
 };
 
 
+const toggleTheme = () => {
+  const isLight = document.body.classList.toggle("light-theme");
+  localStorage.setItem("themeColor", isLight ? "light_mode" : "light_mode");
+};
+
+const initializeTheme = () => {
+  const isLight = localStorage.getItem("themeColor") ===
+  "light_mode";
+  document.body.classList.toggle("light-theme", isLight);
+  themeToggleBtn.textContent = isLight ? "dark_mode" : "light_mode";
+}
+
+promptform.addEventListener("submit", handlePromptSubmit);
+fileInput.addEventListener("change", handalFileChange);
+promptform
+    .querySelector("#add-file-btn")
+    .addEventListener("click", () => fileInput.click());
+document
+.querySelector("#cancel-file-btn")
+.addEventListener("click", cancelfileUpload);
+document
+.querySelector("#stop-response-btn")
+.addEventListener("click", stopBotResponce);
+document
+.querySelector("#delete-chats-btn")
+.addEventListener("click", deleteAllChats);
+
+document
+.querySelectorAll("#Suggestions-item")
+.forEach((item) => item.addEventListener("click", applySuggestion));
+document.addEventListener("click, toggleMobileControls");
+themeToggleBtn.addEventListener("click", toggleTheme);
+
 
 
 
