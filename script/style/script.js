@@ -146,3 +146,54 @@ const handalPromptSubmit = (e) => {
     fetchBotResponse(botMessageDiv);
   }, 600);
 };
+
+
+
+
+
+ const handalFileChange = () => {
+  const file = fileInput.files[0];
+  if (!file) return;
+
+  const isImage = file.type.startWith("image/");
+  const reader = new FileReader();
+
+  reader.onload = (e) => {
+    const base64String = e.target.result.split(",")[1];
+    fileInput.value = "";
+    fileUploadWrapper.querySelector(".file-preview").src = e.target.result;
+    fileUploadWrapper.classList.add(
+      "active",
+      isImage ? "img-attached" : "file-attached"
+    );
+
+    // store file in userData
+    userData.file = {
+      filename: file.name,
+      data: base64String,
+      mime_type: file.type,
+      isImage,
+    };
+  };
+
+  reader.readAsDataURL(file);
+ };
+
+ // cancel file upload
+const cancelfileUpload = () => {
+  userData.file = {};
+  fileUploadWrapper.classList.remove("active", "img-attached","file-attached");
+};
+
+const stopBotResponce = () => {
+  userData.file = {};
+  controller?abort();
+  clearInterval(typingInterval);
+  chatContainer
+        .querySelector(".bot-message.loading")
+        ?.classList.remove("loading");
+  document.body.classList.remove("bot-responding");
+};
+
+
+
