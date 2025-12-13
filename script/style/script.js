@@ -128,4 +128,21 @@ const handalPromptSubmit = (e) => {
   : "";
 
   
-}
+  const userMessageDiv = createMessageElement(
+    `<p class="message-text">${message}</p>${attachmentHTML}`,
+    "user-message"
+  );
+  chatContainer.appendChild(userMessageDiv);
+  scrollTOBottom();
+
+  setTimeout(() => {
+    const botMessageDiv = createMessageElement(
+      `<img src="images/bot.png" alt="" class="avtar"><p class="message-text">just a sec...</p>`,
+      "bot-message",
+      "loading"
+    );
+    chatContainer.appendChild(botMessageDiv);
+    scrollTOBottom();
+    fetchBotResponse(botMessageDiv);
+  }, 600);
+};
