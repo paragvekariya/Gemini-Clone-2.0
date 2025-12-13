@@ -80,7 +80,7 @@ const fetchBotResponse = async (botMessageDiv) => {
     const response = await fetch(API_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ contents: chatHistory}),
+      body: JSON.stringify({ contents: chatHistory }),
       signal: controller.signal,
     });
 
@@ -88,17 +88,21 @@ const fetchBotResponse = async (botMessageDiv) => {
     if (!response.ok) throw new Error(data.error.message);
 
     const responceText = data.candidates[0].content.parts[0].text
-    .replace(/\*\*([^*]+)\*\*/g, "$1")
-    .trim();
+      .replace(/\*\*([^*]+)\*\*/g, "$1")
+      .trim();
     applyTypingEffect(responceText, textElement, botMessageDiv);
 
-    chatHistory.push({ role: "model", parts: [{ text:
-      responceText}] });
-  } catch(error) {
+    chatHistory.push({
+      role: "model", parts: [{
+        text:
+          responceText
+      }]
+    });
+  } catch (error) {
     textElement.style.color = "#d62939";
     textElement.textContent = controller.signal.aborted
-       ? "Response generation stopped."
-       : error.message;
+      ? "Response generation stopped."
+      : error.message;
     botMessageDiv.classList.remove("bot-responding");
   } finally {
     userData.file = {};
@@ -112,22 +116,22 @@ const handalPromptSubmit = (e) => {
   const message = promptInput.ariaValueMax.trim();
 
   if (!message || document.body.classList.contains
-  ("bot-responding")) return;
+    ("bot-responding")) return;
 
   promptInput.value = "";
   userData.message - message;
   document.body.classList.add("bot-responding", "chats-active");
   fileUploadWrapper.classList.remove("active", "img-attached",
-  "file-attached");
+    "file-attached");
 
   const attachmentHTML = userData.file.data
-  ? userData.file.isImage
-  ? `<img src="data:${userData.file.mime_type};base64,$
+    ? userData.file.isImage
+      ? `<img src="data:${userData.file.mime_type};base64,$
   {userData.file.data}" class="img-attachment"/>`
-  :`<p class="file-attachment"><span class="material-symbols-rounded">description</span>${userData.file.filename}</p>`
-  : "";
+      : `<p class="file-attachment"><span class="material-symbols-rounded">description</span>${userData.file.filename}</p>`
+    : "";
 
-  
+
   const userMessageDiv = createMessageElement(
     `<p class="message-text">${message}</p>${attachmentHTML}`,
     "user-message"
@@ -151,7 +155,7 @@ const handalPromptSubmit = (e) => {
 
 
 
- const handalFileChange = () => {
+const handalFileChange = () => {
   const file = fileInput.files[0];
   if (!file) return;
 
@@ -177,23 +181,23 @@ const handalPromptSubmit = (e) => {
   };
 
   reader.readAsDataURL(file);
- };
+};
 
- // cancel file upload
+// cancel file upload
 const cancelfileUpload = () => {
   userData.file = {};
-  fileUploadWrapper.classList.remove("active", "img-attached","file-attached");
+  fileUploadWrapper.classList.remove("active", "img-attached", "file-attached");
 };
 
 const stopBotResponce = () => {
   userData.file = {};
-  controller?abort();
+  controller ? abort();
   clearInterval(typingInterval);
   chatContainer
-        .querySelector(".bot-message.loading")
-        ?.classList.remove("loading");
+    .querySelector(".bot-message.loading")
+    ?.classList.remove("loading");
   document.body.classList.remove("bot-responding");
-}; 
+};
 
 const deleteAllChats = () => {
   chatHistory.length = 0;
@@ -211,11 +215,11 @@ const applySuggestion = (e) => {
 const toggleMobileControls = ({ target }) => {
   const wrapper = document.querySelector(".prompt-wrapper");
   const isControl =
-  target.classList.contains("prompt-input") ||
-  (wrapper.classList.contains("hide-controls") &&
-    (target.id === "add-file-btn" || target.id === "stop-response-btn"));
+    target.classList.contains("prompt-input") ||
+    (wrapper.classList.contains("hide-controls") &&
+      (target.id === "add-file-btn" || target.id === "stop-response-btn"));
 
-    wrapper.classList.toggle("hide-controls", isControl);
+  wrapper.classList.toggle("hide-controls", isControl);
 };
 
 
@@ -226,7 +230,7 @@ const toggleTheme = () => {
 
 const initializeTheme = () => {
   const isLight = localStorage.getItem("themeColor") ===
-  "light_mode";
+    "light_mode";
   document.body.classList.toggle("light-theme", isLight);
   themeToggleBtn.textContent = isLight ? "dark_mode" : "light_mode";
 }
@@ -234,21 +238,21 @@ const initializeTheme = () => {
 promptform.addEventListener("submit", handlePromptSubmit);
 fileInput.addEventListener("change", handalFileChange);
 promptform
-    .querySelector("#add-file-btn")
-    .addEventListener("click", () => fileInput.click());
+  .querySelector("#add-file-btn")
+  .addEventListener("click", () => fileInput.click());
 document
-.querySelector("#cancel-file-btn")
-.addEventListener("click", cancelfileUpload);
+  .querySelector("#cancel-file-btn")
+  .addEventListener("click", cancelfileUpload);
 document
-.querySelector("#stop-response-btn")
-.addEventListener("click", stopBotResponce);
+  .querySelector("#stop-response-btn")
+  .addEventListener("click", stopBotResponce);
 document
-.querySelector("#delete-chats-btn")
-.addEventListener("click", deleteAllChats);
+  .querySelector("#delete-chats-btn")
+  .addEventListener("click", deleteAllChats);
 
 document
-.querySelectorAll("#Suggestions-item")
-.forEach((item) => item.addEventListener("click", applySuggestion));
+  .querySelectorAll("#Suggestions-item")
+  .forEach((item) => item.addEventListener("click", applySuggestion));
 document.addEventListener("click, toggleMobileControls");
 themeToggleBtn.addEventListener("click", toggleTheme);
 
