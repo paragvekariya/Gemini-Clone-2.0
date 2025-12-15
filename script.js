@@ -23,7 +23,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ================= API CONFIG ================= */
-  
+  const API_KEY = "AIzaSyBiDfsEiogU3H-VwYSLCGVGirWJo70dg34";
+
+  const API_URL =
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
 
   /* ================= STATE ================= */
   let typingInterval;
@@ -171,21 +174,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
   console.log("✅ Gemini Clone JS Loaded Successfully");
 });
-
-
-
-fetch("/.netlify/functions/gemini", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({
-    prompt: userInput
-  })
-})
-.then(res => res.json())
-.then(data => {
-  console.log(data.reply);
-});
-
-
