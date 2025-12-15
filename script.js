@@ -23,10 +23,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ================= API CONFIG ================= */
-  const API_KEY = "AIzaSyBhP6bcebkZIToQZYglMgX21Glhw8dXlZk";
+  const API_KEY = "AIzaSyBiDfsEiogU3H-VwYSLCGVGirWJo70dg34";
 
   const API_URL =
-    `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${API_KEY}`;
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
 
   /* ================= STATE ================= */
   let typingInterval;
