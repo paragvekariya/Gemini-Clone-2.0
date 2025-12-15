@@ -174,3 +174,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   console.log("✅ Gemini Clone JS Loaded Successfully");
 });
+
+
+
+fetch("/.netlify/functions/server")
+  .then(res => res.json())
+  .then(data => {
+    console.log(data.message);
+  });
+
