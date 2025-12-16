@@ -23,10 +23,24 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ================= API CONFIG ================= */
-  const API_KEY = "AIzaSyBiDfsEiogU3H-VwYSLCGVGirWJo70dg34";
+  //const API_KEY = "";
 
-  const API_URL =
-    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
+  function loadData() {
+  fetch("/.netlify/functions/api")
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("output").textContent =
+        JSON.stringify(data, null, 2);
+    })
+    .catch(err => {
+      alert("API Error");
+      console.error(err);
+    });
+}
+
+  const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
+
+    
 
   /* ================= STATE ================= */
   let typingInterval;

@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "dotenv": "^17.2.3"
+  },
+  "type": "module",
+  "name": "gemini-clone-2.0",
+  "version": "1.0.0",
+  "description": "Gemini Clone is a conversational AI web application inspired by Google Gemini. It provides an interactive chat interface where users can ask questions, receive AI-generated responses, and manage multiple conversations with an elegant.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paragvekariya/Gemini-Clone-2.0.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paragvekariya/Gemini-Clone-2.0/issues"
+  },
+  "homepage": "https://github.com/paragvekariya/Gemini-Clone-2.0#readme"
+}
