@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ================= API CONFIG ================= */
   //const apikey = process.env.API_KEY
   process.env.API_KEY;
-  const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=AIzaSyC8XwEG8a8y1IjcG4-4lWi_UgW5gRAu7tg`;
+  const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=`;
 
     
 
