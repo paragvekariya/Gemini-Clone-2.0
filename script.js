@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 document.addEventListener("DOMContentLoaded", () => {
 
   /* ================= DOM ELEMENTS ================= */
@@ -23,26 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ================= API CONFIG ================= */
-//const API_KEY = "sss";
-  //const API_URL = ``;
-
- function askGemini() {
-  const text = document.getElementById("q").value;
-
-  fetch("/.netlify/functions/gemini", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ prompt: text }),
-  })
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById("ans").textContent =
-        JSON.stringify(data, null, 2);
-    })
-    .catch(() => alert("Gemini error"));
-}
-   
- //const API_KEY = "";
+  //const apikey = process.env.API_KEY
+  process.env.API_KEY;
   const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
 
     
